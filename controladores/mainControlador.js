@@ -1,5 +1,7 @@
 import { optionsMysql } from '../config/mariaDB.js';
 import knex from 'knex';
+import { faker } from '@faker-js/faker';
+faker.locale = 'en';
 const database = knex(optionsMysql);
 
 class mainControlador {
@@ -72,6 +74,28 @@ class mainControlador {
         }
     }
 
+    async randomProducts() {
+        try {
+            const randomProducts = [];
+            let id = 1;
+
+            for (let i = 1 ; i <= 5 ; i++) {
+                const productFormat = {
+                    id: id,
+                    name: faker.commerce.product(),
+                    description: faker.commerce.productAdjective(),
+                    price: faker.commerce.price(50,1000,2,'$')
+                };
+                id++;
+                randomProducts.push(productFormat);
+            }
+
+            return randomProducts;
+        }
+        catch (err) {
+            console.log(`randomProducts METHOD ERR! ${err}`);
+        }
+    }
 };
 
 export default mainControlador;

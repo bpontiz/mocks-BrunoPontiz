@@ -27,9 +27,6 @@ const io = new IOServer(httpServer, {
 });
 comms(io);
 
-// const apiRoutes = new Router();
-
-//app.use("/", apiRoutes);
 app.use("/api", apiRoutes);
 
 
