@@ -89,7 +89,8 @@ class mainControlador {
                 id++;
                 randomProducts.push(productFormat);
             }
-
+            console.table(randomProducts);
+            console.log(`Fake products array length: ${randomProducts.length}`)
             return randomProducts;
         }
         catch (err) {
